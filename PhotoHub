@@ -3,10 +3,64 @@ import 'package:flutter/material.dart';
 class PhotoHub extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    return new Container(
-        child: new Center(
-          child: new Text('Welcome to the Photo Hub'),
-        )
+    return new MaterialApp(
+      home: new Scaffold(
+          body: new Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                new produceImage(),
+                VerticalPadding(
+                  color: Colors.white,
+                ),
+                Text("Fresh Hub",
+                    style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 2.0)
+                ),
+                VerticalPadding(
+                  color: Colors.white,
+                ),
+                Text("Mission of Fresh Hub: Our aim is to provide fresh, nutritional food to Houstonians in food deserts.",
+                style: TextStyle(fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center),
+                VerticalPadding(
+                  color: Colors.white,
+                ),
+                Text("Scroll down to see photos and videos. Go to the navigation bar to check out more cool features.", textAlign: TextAlign.center),
+                VerticalPadding(
+                  color: Colors.white,
+                ),
+                Text("EVENT PHOTOS", textAlign: TextAlign.start),
+              ]
+          )
+      )
+    );
+  }
+}
+
+class produceImage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var assetsImage = new AssetImage('assets/images/produce.jpg');
+    var image = new Image(image: assetsImage, width: 619.9, height: 233.0);
+    return new Container(child: image);
+  }
+}
+
+class VerticalPadding extends StatelessWidget {
+  VerticalPadding({
+    @required this.child,
+    this.padding = 8.0,
+    this.color = Colors.white,
+});
+  final double padding;
+  final Widget child;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: color,
+      padding: EdgeInsets.symmetric(vertical: padding),
+      child: child,
     );
   }
 }
