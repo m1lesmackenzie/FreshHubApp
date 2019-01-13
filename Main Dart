@@ -12,11 +12,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Photo Hub',
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: PhotoHub(title: 'Fresh Hub'),
+      home: PhotoHub(title: "Photo Hub"),
     );
   }
 }
@@ -50,33 +50,32 @@ class _PhotoHubState extends State<PhotoHub> with SingleTickerProviderStateMixin
 
     return Scaffold(
       appBar: AppBar(
-
-        title: Text(widget.title),
+        title: Text("Fresh Hub", style: TextStyle(fontStyle: FontStyle.italic)),
       ),
 
       bottomNavigationBar: new Material(
-        color: Colors.green,
-        child: new TabBar(
-          controller: controller,
-          tabs: <Tab> [
-            new Tab(icon: new Icon(Icons.camera_alt)),
-            new Tab(icon: new Icon(Icons.calendar_today)),
-            new Tab(icon: new Icon(Icons.library_books)),
-            new Tab(icon: new Icon(Icons.question_answer)),
-            new Tab(icon: new Icon(Icons.add_location)),
-          ]
-        )
+          color: Colors.green,
+          child: new TabBar(
+              controller: controller,
+              tabs: <Tab> [
+                new Tab(icon: new Icon(Icons.camera_alt)),
+                new Tab(icon: new Icon(Icons.calendar_today)),
+                new Tab(icon: new Icon(Icons.library_books)),
+                new Tab(icon: new Icon(Icons.question_answer)),
+                new Tab(icon: new Icon(Icons.add_location)),
+              ]
+          )
       ),
-        body: new TabBarView(
-        controller: controller,
-      children: <Widget>[
-        new first.PhotoHub(),
-        new second.Calendar(),
-        new third.RecipeHub(),
-        new fourth.Survey(),
-        new fifth.Map(),
-      ]
-    ),
+      body: new TabBarView(
+          controller: controller,
+          children: <Widget>[
+            new first.PhotoHub(),
+            new second.Calendar(),
+            new third.RecipeHub(),
+            new fourth.Survey(),
+            new fifth.Map(),
+          ]
+      ),
     );
   }
 }
