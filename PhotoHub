@@ -13,22 +13,32 @@ class PhotoHub extends StatelessWidget{
                   color: Colors.white,
                 ),
                 Text("Fresh Hub",
-                    style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 2.0)
+                    style: TextStyle(fontFamily: 'Abril Fatface', fontSize: 65),
                 ),
                 VerticalPadding(
                   color: Colors.white,
                 ),
                 Text("Mission of Fresh Hub: Our aim is to provide fresh, nutritional food to Houstonians in food deserts.",
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Questrial'),
                     textAlign: TextAlign.center),
                 VerticalPadding(
                   color: Colors.white,
                 ),
-                Text("Scroll down to see photos and videos. Go to the navigation bar to check out more cool features.", textAlign: TextAlign.center),
+                Text("Scroll down to see photos and videos. Go to the navigation bar to check out more cool features.",
+                    textAlign: TextAlign.center, style: TextStyle(fontFamily: 'Questrial')),
                 VerticalPadding(
                   color: Colors.white,
                 ),
-                Text("EVENT PHOTOS", textAlign: TextAlign.start),
+                Text("EVENT PHOTOS", style: TextStyle(decoration: TextDecoration.underline, fontFamily: 'Abril Fatface', fontSize: 30)),
+                VerticalPadding(
+                  color: Colors.white,
+                ),
+                Text("~Sunnyside 11/19/18~", style: TextStyle(fontFamily: 'Questrial')),
+                new Sunnyside11(),
+                VerticalPadding(
+                  color: Colors.white,
+                ),
+                Text("~Kashmere 12/27/18~", style: TextStyle(fontFamily: 'Questrial')),
               ]
           )
       )
@@ -36,10 +46,54 @@ class PhotoHub extends StatelessWidget{
   }
 }
 
+class Scroll extends StatefulWidget {
+  @override
+  _ScrollState createState() => _ScrollState();
+}
+
+class _ScrollState extends State<Scroll>
+  with SingleTickerProviderStateMixin {
+    ScrollController _scrollViewController;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollViewController = ScrollController();
+  }
+
+  @override
+  void dispose() {
+    _scrollViewController.dispose();
+    super.dispose();
+  }
+
+  Widget build(BuildContext context) {
+  return Scaffold(
+    body: NestedScrollView(
+      controller: _scrollViewController;
+      headerSliverBuilder: (BuildContext context, bool boxIsScrolled) {
+        body: new Column(
+        
+        );
+  },
+  ),
+  );
+  }
+}
+
 class produceImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var assetsImage = new AssetImage('assets/images/produce.jpg');
+    var image = new Image(image: assetsImage, width: 619.9, height: 233.0);
+    return new Container(child: image);
+  }
+}
+
+class Sunnyside11 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var assetsImage = new AssetImage('assets/images/sunnyside1-1.jpg');
     var image = new Image(image: assetsImage, width: 619.9, height: 233.0);
     return new Container(child: image);
   }
