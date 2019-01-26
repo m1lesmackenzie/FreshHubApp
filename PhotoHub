@@ -1,51 +1,86 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_pro/carousel_pro.dart';
 
 class PhotoHub extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
         home: new Scaffold(
-            body: new Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  new produceImage(),
-                  VerticalPadding(
-                    color: Colors.white,
-                  ),
-                  Text("Fresh Hub",
-                    style: TextStyle(fontFamily: 'Abril Fatface', fontSize: 65),
-                  ),
-                  VerticalPadding(
-                    color: Colors.white,
-                  ),
-                  Text("Mission of Fresh Hub: Our aim is to provide fresh, nutritional food to Houstonians in food deserts.",
-                      style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Questrial'),
-                      textAlign: TextAlign.center),
-                  VerticalPadding(
-                    color: Colors.white,
-                  ),
-                  Text("Scroll down to see photos and videos. Go to the navigation bar to check out more cool features.",
-                      textAlign: TextAlign.center, style: TextStyle(fontFamily: 'Questrial')),
-                  VerticalPadding(
-                    color: Colors.white,
-                  ),
-                  Text("EVENT PHOTOS", style: TextStyle(decoration: TextDecoration.underline, fontFamily: 'Abril Fatface', fontSize: 30)),
-                  VerticalPadding(
-                    color: Colors.white,
-                  ),
-                  Text("~Sunnyside 11/19/18~", style: TextStyle(fontFamily: 'Questrial')),
-                  new Sunnyside11(),
-                  VerticalPadding(
-                    color: Colors.white,
-                  ),
-                  Text("~Kashmere 12/27/18~", style: TextStyle(fontFamily: 'Questrial')),
-                ]
-            )
+            body: getListView(),
         )
     );
   }
 }
 
+Widget getListView() {
+  var listView = ListView(
+    children: <Widget>[
+      new Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            new produceImage(),
+            VerticalPadding(
+              color: Colors.white,
+            ),
+            Text("Fresh Hub",
+              style: TextStyle(fontFamily: 'Abril Fatface', fontSize: 65),
+            ),
+            VerticalPadding(
+              color: Colors.white,
+            ),
+            Text("Mission of Fresh Hub: Our aim is to provide fresh, nutritional food to Houstonians in food deserts.",
+                style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Questrial'),
+                textAlign: TextAlign.center),
+            VerticalPadding(
+              color: Colors.white,
+            ),
+            Text("Scroll down to see photos and videos. Go to the navigation bar to check out more cool features.",
+                textAlign: TextAlign.center, style: TextStyle(fontFamily: 'Questrial')),
+            VerticalPadding(
+              color: Colors.white,
+            ),
+            Text("EVENT PHOTOS", style: TextStyle(decoration: TextDecoration.underline, fontFamily: 'Abril Fatface', fontSize: 30)),
+            VerticalPadding(
+              color: Colors.white,
+            ),
+            Text("~Sunnyside 11/19/18~", style: TextStyle(fontFamily: 'Questrial')),
+            new Sunnyside11(),
+            VerticalPadding(
+              color: Colors.white,
+            ),
+            new Sunnyside12(),
+            VerticalPadding(
+              color: Colors.white,
+            ),
+            new Sunnyside14(),
+            VerticalPadding(
+              color: Colors.white,
+            ),
+            
+            ImageCarousel(),
+          ]
+      )
+    ]
+  );
+
+  return listView;
+}
+
+class ImageCarousel extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Carousel(
+      boxFit: BoxFit.cover,
+      images: [
+        AssetImage('assets/images/sunnyside1-1.jpg'),
+        AssetImage('assets/images/sunnyside1-2.jpg'),
+        AssetImage('assets/images/sunnyside1-4.jpg'),
+      ],
+      animationCurve: Curves.fastOutSlowIn,
+      animationDuration: Duration(milliseconds: 2000),
+    );
+  }
+}
 class produceImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -59,6 +94,33 @@ class Sunnyside11 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var assetsImage = new AssetImage('assets/images/sunnyside1-1.jpg');
+    var image = new Image(image: assetsImage, width: 619.9, height: 233.0);
+    return new Container(child: image);
+  }
+}
+
+class Sunnyside12 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var assetsImage = new AssetImage('assets/images/sunnyside1-2.jpg');
+    var image = new Image(image: assetsImage, width: 619.9, height: 233.0);
+    return new Container(child: image);
+  }
+}
+
+class Sunnyside13 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var assetsImage = new AssetImage('assets/images/sunnyside1-3.jpg');
+    var image = new Image(image: assetsImage, width: 619.9, height: 233.0);
+    return new Container(child: image);
+  }
+}
+
+class Sunnyside14 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var assetsImage = new AssetImage('assets/images/sunnyside1-4.jpg');
     var image = new Image(image: assetsImage, width: 619.9, height: 233.0);
     return new Container(child: image);
   }
