@@ -4,80 +4,45 @@ class PhotoHub extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      home: new Scaffold(
-          body: new Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                new produceImage(),
-                VerticalPadding(
-                  color: Colors.white,
-                ),
-                Text("Fresh Hub",
+        home: new Scaffold(
+            body: new Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  new produceImage(),
+                  VerticalPadding(
+                    color: Colors.white,
+                  ),
+                  Text("Fresh Hub",
                     style: TextStyle(fontFamily: 'Abril Fatface', fontSize: 65),
-                ),
-                VerticalPadding(
-                  color: Colors.white,
-                ),
-                Text("Mission of Fresh Hub: Our aim is to provide fresh, nutritional food to Houstonians in food deserts.",
-                style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Questrial'),
-                    textAlign: TextAlign.center),
-                VerticalPadding(
-                  color: Colors.white,
-                ),
-                Text("Scroll down to see photos and videos. Go to the navigation bar to check out more cool features.",
-                    textAlign: TextAlign.center, style: TextStyle(fontFamily: 'Questrial')),
-                VerticalPadding(
-                  color: Colors.white,
-                ),
-                Text("EVENT PHOTOS", style: TextStyle(decoration: TextDecoration.underline, fontFamily: 'Abril Fatface', fontSize: 30)),
-                VerticalPadding(
-                  color: Colors.white,
-                ),
-                Text("~Sunnyside 11/19/18~", style: TextStyle(fontFamily: 'Questrial')),
-                new Sunnyside11(),
-                VerticalPadding(
-                  color: Colors.white,
-                ),
-                Text("~Kashmere 12/27/18~", style: TextStyle(fontFamily: 'Questrial')),
-              ]
-          )
-      )
+                  ),
+                  VerticalPadding(
+                    color: Colors.white,
+                  ),
+                  Text("Mission of Fresh Hub: Our aim is to provide fresh, nutritional food to Houstonians in food deserts.",
+                      style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Questrial'),
+                      textAlign: TextAlign.center),
+                  VerticalPadding(
+                    color: Colors.white,
+                  ),
+                  Text("Scroll down to see photos and videos. Go to the navigation bar to check out more cool features.",
+                      textAlign: TextAlign.center, style: TextStyle(fontFamily: 'Questrial')),
+                  VerticalPadding(
+                    color: Colors.white,
+                  ),
+                  Text("EVENT PHOTOS", style: TextStyle(decoration: TextDecoration.underline, fontFamily: 'Abril Fatface', fontSize: 30)),
+                  VerticalPadding(
+                    color: Colors.white,
+                  ),
+                  Text("~Sunnyside 11/19/18~", style: TextStyle(fontFamily: 'Questrial')),
+                  new Sunnyside11(),
+                  VerticalPadding(
+                    color: Colors.white,
+                  ),
+                  Text("~Kashmere 12/27/18~", style: TextStyle(fontFamily: 'Questrial')),
+                ]
+            )
+        )
     );
-  }
-}
-
-class Scroll extends StatefulWidget {
-  @override
-  _ScrollState createState() => _ScrollState();
-}
-
-class _ScrollState extends State<Scroll>
-  with SingleTickerProviderStateMixin {
-    ScrollController _scrollViewController;
-
-  @override
-  void initState() {
-    super.initState();
-    _scrollViewController = ScrollController();
-  }
-
-  @override
-  void dispose() {
-    _scrollViewController.dispose();
-    super.dispose();
-  }
-
-  Widget build(BuildContext context) {
-  return Scaffold(
-    body: NestedScrollView(
-      controller: _scrollViewController;
-      headerSliverBuilder: (BuildContext context, bool boxIsScrolled) {
-        body: new Column(
-        
-        );
-  },
-  ),
-  );
   }
 }
 
@@ -104,7 +69,7 @@ class VerticalPadding extends StatelessWidget {
     @required this.child,
     this.padding = 8.0,
     this.color = Colors.white,
-});
+  });
   final double padding;
   final Widget child;
   final Color color;
