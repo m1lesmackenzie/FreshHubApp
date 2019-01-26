@@ -57,7 +57,17 @@ Widget getListView() {
               color: Colors.white,
             ),
             
-            ImageCarousel(),
+            new SizedBox(
+              height: 300,
+              width: 620,
+              child: new Carousel(
+                images: [
+                  new AssetImage('assets/images/sunnyside1-1.jpg'),
+                  new AssetImage('assets/images/sunnyside1-2.jpg'),
+                  new AssetImage('assets/images/sunnyside1-4.jpg'),
+                ],
+              )
+            )
           ]
       )
     ]
@@ -66,21 +76,6 @@ Widget getListView() {
   return listView;
 }
 
-class ImageCarousel extends StatelessWidget{
-  @override
-  Widget build(BuildContext context) {
-    return Carousel(
-      boxFit: BoxFit.cover,
-      images: [
-        AssetImage('assets/images/sunnyside1-1.jpg'),
-        AssetImage('assets/images/sunnyside1-2.jpg'),
-        AssetImage('assets/images/sunnyside1-4.jpg'),
-      ],
-      animationCurve: Curves.fastOutSlowIn,
-      animationDuration: Duration(milliseconds: 2000),
-    );
-  }
-}
 class produceImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
