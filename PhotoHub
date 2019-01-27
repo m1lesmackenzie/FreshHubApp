@@ -44,29 +44,19 @@ Widget getListView() {
               color: Colors.white,
             ),
             Text("~Sunnyside 11/19/18~", style: TextStyle(fontFamily: 'Questrial')),
-            new Sunnyside11(),
             VerticalPadding(
               color: Colors.white,
             ),
-            new Sunnyside12(),
-            VerticalPadding(
-              color: Colors.white,
-            ),
-            new Sunnyside14(),
-            VerticalPadding(
-              color: Colors.white,
-            ),
-            
             new SizedBox(
-              height: 300,
-              width: 620,
-              child: new Carousel(
-                images: [
-                  new AssetImage('assets/images/sunnyside1-1.jpg'),
-                  new AssetImage('assets/images/sunnyside1-2.jpg'),
-                  new AssetImage('assets/images/sunnyside1-4.jpg'),
-                ],
-              )
+                height: 300,
+                width: 620,
+                child: new Carousel(
+                  images: [
+                    new AssetImage('assets/images/sunnyside1-1.jpg'),
+                    new AssetImage('assets/images/sunnyside1-2.jpg'),
+                    new AssetImage('assets/images/sunnyside1-4.jpg'),
+                  ],
+                )
             )
           ]
       )
