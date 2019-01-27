@@ -23,7 +23,7 @@ Widget getListView() {
               color: Colors.white,
             ),
             Text("Fresh Hub",
-              style: TextStyle(fontFamily: 'Abril Fatface', fontSize: 65),
+              style: TextStyle(fontFamily: 'Abril Fatface', fontSize: 50),
             ),
             VerticalPadding(
               color: Colors.white,
