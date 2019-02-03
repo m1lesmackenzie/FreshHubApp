@@ -40,6 +40,46 @@ Widget getListView() {
               color: Colors.white,
             ),
             Text("EVENT PHOTOS", style: TextStyle(decoration: TextDecoration.underline, fontFamily: 'Abril Fatface', fontSize: 30)),
+            new groupPic(),
+            VerticalPadding(
+              color: Colors.white,
+            ),
+            Text("~Sunnyside 1/19/19~", style: TextStyle(fontFamily: 'Questrial')),
+            VerticalPadding(
+              color: Colors.white,
+            ),
+            new SizedBox(
+                height: 300.0,
+                width: 620.0,
+                child: new Carousel(
+                  images: [
+                    new AssetImage('assets/images/sunnyside2-2.jpg'),
+                    new AssetImage('assets/images/sunnyside2-1.jpg'),
+                    new AssetImage('assets/images/sunnyside2-3.jpg'),
+                    new AssetImage('assets/images/sunnyside2-4.jpg'),
+                  ],
+                )
+            ),
+            VerticalPadding(
+              color: Colors.white,
+            ),
+            Text("~Kashmere 12/27/18~", style: TextStyle(fontFamily: 'Questrial')),
+            VerticalPadding(
+              color: Colors.white,
+            ),
+            new SizedBox(
+                height: 300.0,
+                width: 620.0,
+                child: new Carousel(
+                  images: [
+                    new AssetImage('assets/images/kashmere1-2.jpg'),
+                    new AssetImage('assets/images/kashmere1-1.jpg'),
+                    new AssetImage('assets/images/kashmere1-3.jpg'),
+                    new AssetImage('assets/images/kashmere1-4.jpg'),
+                  ],
+                )
+            ),
+
             VerticalPadding(
               color: Colors.white,
             ),
@@ -48,8 +88,8 @@ Widget getListView() {
               color: Colors.white,
             ),
             new SizedBox(
-                height: 300,
-                width: 620,
+                height: 300.0,
+                width: 620.0,
                 child: new Carousel(
                   images: [
                     new AssetImage('assets/images/sunnyside1-1.jpg'),
@@ -57,7 +97,48 @@ Widget getListView() {
                     new AssetImage('assets/images/sunnyside1-4.jpg'),
                   ],
                 )
-            )
+            ),
+            VerticalPadding(
+              color: Colors.white,
+            ),
+            Text("FOOD RESCUES", style: TextStyle(decoration: TextDecoration.underline, fontFamily: 'Abril Fatface', fontSize: 30)),
+            new groupPic2(),
+            VerticalPadding(
+              color: Colors.white,
+            ),
+            Text("Partnering with Second Servings to rescue food that would otherwise be thrown away", style: TextStyle(fontFamily: 'Questrial')),
+            Text("~Produce from Trader Joe's~", style: TextStyle(fontFamily: 'Questrial')),
+            VerticalPadding(
+              color: Colors.white,
+            ),
+            new SizedBox(
+                height: 300.0,
+                width: 620.0,
+                child: new Carousel(
+                  images: [
+                    new AssetImage('assets/images/foodrescue1-1.jpg'),
+                    new AssetImage('assets/images/foodrescue1-2.jpg'),
+                    new AssetImage('assets/images/foodrescue1-3.jpg'),
+                    new AssetImage('assets/images/foodrescue1-4.jpg'),
+                  ],
+                )
+            ),
+            Text("~Bread from Slow Dough and Breadman~", style: TextStyle(fontFamily: 'Questrial')),
+            VerticalPadding(
+              color: Colors.white,
+            ),
+            new SizedBox(
+                height: 300.0,
+                width: 620.0,
+                child: new Carousel(
+                  images: [
+                    new AssetImage('assets/images/foodrescue2-1.jpg'),
+                    new AssetImage('assets/images/foodrescue2-5.jpg'),
+                    new AssetImage('assets/images/foodrescue2-3.jpg'),
+                    new AssetImage('assets/images/foodrescue2-4.jpg'),
+                  ],
+                )
+            ),
           ]
       )
     ]
@@ -70,43 +151,24 @@ class produceImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var assetsImage = new AssetImage('assets/images/produce.jpg');
-    var image = new Image(image: assetsImage, width: 619.9, height: 233.0);
+    var image = new Image(image: assetsImage, width: 619.9, height: 250.0);
+    return new Container(child: image);
+  }
+}
+class groupPic extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var assetsImage = new AssetImage('assets/images/grouppic.jpg');
+    var image = new Image(image: assetsImage, width: 619.9, height: 250.0);
     return new Container(child: image);
   }
 }
 
-class Sunnyside11 extends StatelessWidget {
+class groupPic2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var assetsImage = new AssetImage('assets/images/sunnyside1-1.jpg');
-    var image = new Image(image: assetsImage, width: 619.9, height: 233.0);
-    return new Container(child: image);
-  }
-}
-
-class Sunnyside12 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    var assetsImage = new AssetImage('assets/images/sunnyside1-2.jpg');
-    var image = new Image(image: assetsImage, width: 619.9, height: 233.0);
-    return new Container(child: image);
-  }
-}
-
-class Sunnyside13 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    var assetsImage = new AssetImage('assets/images/sunnyside1-3.jpg');
-    var image = new Image(image: assetsImage, width: 619.9, height: 233.0);
-    return new Container(child: image);
-  }
-}
-
-class Sunnyside14 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    var assetsImage = new AssetImage('assets/images/sunnyside1-4.jpg');
-    var image = new Image(image: assetsImage, width: 619.9, height: 233.0);
+    var assetsImage = new AssetImage('assets/images/grouppic2.jpg');
+    var image = new Image(image: assetsImage, width: 619.9, height: 250.0);
     return new Container(child: image);
   }
 }
