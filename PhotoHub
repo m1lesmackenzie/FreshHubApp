@@ -40,7 +40,24 @@ Widget getListView() {
               color: Colors.white,
             ),
             Text("EVENT PHOTOS", style: TextStyle(decoration: TextDecoration.underline, fontFamily: 'Abril Fatface', fontSize: 30)),
-            new groupPic(),
+            VerticalPadding(
+              color: Colors.white,
+            ),
+            Text("~Kashmere 2/15/19~", style: TextStyle(fontFamily: 'Questrial')),
+            VerticalPadding(
+              color: Colors.white,
+            ),
+            new SizedBox(
+                height: 300.0,
+                width: 620.0,
+                child: new Carousel(
+                  images: [
+                    new AssetImage('assets/images/kashmere2-1.jpg'),
+                    new AssetImage('assets/images/kashmere2-2.png'),
+                    new AssetImage('assets/images/kashmere2-3.jpg'),
+                  ],
+                )
+            ),
             VerticalPadding(
               color: Colors.white,
             ),
@@ -122,6 +139,9 @@ Widget getListView() {
                     new AssetImage('assets/images/foodrescue1-4.jpg'),
                   ],
                 )
+            ),
+            VerticalPadding(
+              color: Colors.white,
             ),
             Text("~Bread from Slow Dough and Breadman~", style: TextStyle(fontFamily: 'Questrial')),
             VerticalPadding(
