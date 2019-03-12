@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'package:fresh_hub_app/recipeModel.dart';
+import 'dart:convert';
 
 void main(){
   runApp(RecipeHub());
@@ -12,58 +11,75 @@ final ThemeData _themeData = ThemeData(
 
 ///Root MaterialApp
 class RecipeHub extends StatefulWidget{
+  List data;
   @override
   _RecipeHubState createState() => _RecipeHubState();
 }
 
-class _RecipeHubState extends State<RecipeHub>{
-  @override
-  Widget build(BuildContext context){
-    ///var _routes = <String, WidgetBuilder>{
-    ///  "/recipes" :  (BuildContext context) =>  new RecipeHubState(),
-   /// };
-    /// routes: _routes,
-    return Scaffold(
-      appBar: AppBar(title: Text("Recipe Hub")),
-      body: RefreshIndicator(
-          child: ListView.builder(itemBuilder: _itemBuilder),
-          onRefresh: _onRefresh,
-      ),
-    );
-  }
-
-  Future<Null> _onRefresh(){
-    Completer<Null> completer = Completer<Null>();
-    Timer timer = Timer(Duration(seconds: 3), (){
-      completer.complete();
-    });
-    return completer.future;
-  }
-  Widget _itemBuilder(BuildContext context, int index) {
-    Recipe recipe = getRecipe(index);
-    return new RecipeItemWidget(recipe: recipe);
-  }
-
-  Recipe getRecipe(int index) {
-    return new Recipe(false, "Recipe $index");
-  }
-}
-
-class RecipeItemWidget extends StatefulWidget {
-  RecipeItemWidget({Key, key, this.recipe}) : super(key:key);
-
-  final Recipe  recipe;
-
-  @override
-  _RecipeItemWidgetState createState() => _RecipeItemWidgetState();
-}
-
-class _RecipeItemWidgetState extends State<RecipeItemWidget> {
+class _RecipeHubState extends State<RecipeHub> {
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: Text("  "),
-      title:  Text(widget.recipe.name),
+    ///var _routes = <String, WidgetBuilder>{
+    ///  "/recipes" :  (BuildContext context) =>  new RecipeHubState(),
+    /// };
+    /// routes: _routes,
+    return Scaffold(
+        appBar: AppBar(title: Text("Recipe Hub")),
+        body: Container(
+          child: Center(
+              child: FutureBuilder(
+                  future: DefaultAssetBundle
+                      .of(context)
+                      .loadString('load_json/recipe.json'),
+                  builder: (context, snapshot) {
+                    var mydata = jsonDecode(snapshot.data.toString());
+                    return ListView.builder(
+                      itemBuilder: (BuildContext context, int index) {
+                        return new Card(
+                          child: new Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: <Widget>[
+                                RichText(
+                                  text: TextSpan(
+                                    style: DefaultTextStyle.of(context).style,
+                                    children: <TextSpan>[
+                                      TextSpan(
+                                        text: mydata[index]['name'],
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: "\n\nIngredients: \n",
+                                        style: TextStyle(fontStyle: FontStyle.italic, color: Colors.green, fontWeight: FontWeight.bold),
+                                      ),
+                                      TextSpan(
+                                        text: mydata[index]['ingredients'],
+                                        style: TextStyle(color : Colors.black)
+                                      ),
+                                      TextSpan(
+                                        text: "\n\nInstructions: \n",
+                                        style: TextStyle(fontStyle: FontStyle.italic, color: Colors.green, fontWeight: FontWeight.bold),
+                                      ),
+                                      TextSpan(
+                                          text: mydata[index]['instructions'],
+                                          style: TextStyle(color : Colors.black)
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ]
+                          ),
+                        );
+                      },
+                      itemCount: mydata == null ? 0 : mydata.length,
+                    );
+                  }
+              )
+          ),
+        )
     );
   }
 }
