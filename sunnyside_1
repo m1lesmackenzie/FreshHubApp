@@ -1,0 +1,108 @@
+import 'package:flutter/material.dart';
+
+class sunnyside_1 extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return new MaterialApp(
+        home: new Scaffold(
+          body: getListView(),
+          appBar: AppBar(
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                SizedBox(
+                  width: 10.0,
+                ),
+                Text("Sunnyside 11/19/18"),
+              ],
+            ),
+          ),
+        )
+    );
+  }
+}
+
+Widget getListView() {
+  var listView = ListView(
+      children: <Widget>[
+        new Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              VerticalPadding(
+                color: Colors.white,
+              ),
+              new groupPic(),
+              VerticalPadding(
+                color: Colors.white,
+              ),
+              new sunnyside1(),
+              VerticalPadding(
+                color: Colors.white,
+              ),
+              new sunnyside2(),
+              VerticalPadding(
+                color: Colors.white,
+              ),
+              new sunnyside3(),
+            ]
+        )
+      ]
+  );
+
+  return listView;
+}
+class groupPic extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var assetsImage = new AssetImage('assets/images/grouppic.jpg');
+    var image = new Image(image: assetsImage, width: 619.9, height: 250.0);
+    return new Container(child: image);
+  }
+}
+
+class sunnyside1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var assetsImage = new AssetImage('assets/images/sunnyside1-1.jpg');
+    var image = new Image(image: assetsImage, width: 619.9, height: 250.0);
+    return new Container(child: image);
+  }
+}
+
+class sunnyside2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var assetsImage = new AssetImage('assets/images/sunnyside1-2.jpg');
+    var image = new Image(image: assetsImage, width: 619.9, height: 250.0);
+    return new Container(child: image);
+  }
+}
+class sunnyside3 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var assetsImage = new AssetImage('assets/images/sunnyside1-4.jpg');
+    var image = new Image(image: assetsImage, width: 619.9, height: 250.0);
+    return new Container(child: image);
+  }
+}
+
+class VerticalPadding extends StatelessWidget {
+  VerticalPadding({
+    @required this.child,
+    this.padding = 8.0,
+    this.color = Colors.white,
+  });
+  final double padding;
+  final Widget child;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: color,
+      padding: EdgeInsets.symmetric(vertical: padding),
+      child: child,
+    );
+  }
+}
