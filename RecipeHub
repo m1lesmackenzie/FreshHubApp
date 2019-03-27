@@ -1,85 +1,104 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 
-void main(){
-  runApp(RecipeHub());
-}
+class AppetizersPage extends StatelessWidget{
 
-final ThemeData _themeData = ThemeData(
-  primaryColor: Colors.green,
-);
-
-///Root MaterialApp
-class RecipeHub extends StatefulWidget{
-  List data;
-  @override
-  _RecipeHubState createState() => _RecipeHubState();
-}
-
-class _RecipeHubState extends State<RecipeHub> {
-  @override
-  Widget build(BuildContext context) {
-    ///var _routes = <String, WidgetBuilder>{
-    ///  "/recipes" :  (BuildContext context) =>  new RecipeHubState(),
-    /// };
-    /// routes: _routes,
-    return Scaffold(
-        appBar: AppBar(title: Text("Recipe Hub")),
-        body: Container(
-          child: Center(
-              child: FutureBuilder(
-                  future: DefaultAssetBundle
-                      .of(context)
-                      .loadString('load_json/recipe.json'),
-                  builder: (context, snapshot) {
-                    var mydata = jsonDecode(snapshot.data.toString());
-                    return ListView.builder(
-                      itemBuilder: (BuildContext context, int index) {
-                        return new Card(
-                          child: new Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: <Widget>[
-                                RichText(
-                                  text: TextSpan(
-                                    style: DefaultTextStyle.of(context).style,
-                                    children: <TextSpan>[
-                                      TextSpan(
-                                        text: mydata[index]['name'],
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 16
-                                        ),
-                                      ),
-                                      TextSpan(
-                                        text: "\n\nIngredients: \n",
-                                        style: TextStyle(fontStyle: FontStyle.italic, color: Colors.green, fontWeight: FontWeight.bold),
-                                      ),
-                                      TextSpan(
-                                        text: mydata[index]['ingredients'],
-                                        style: TextStyle(color : Colors.black)
-                                      ),
-                                      TextSpan(
-                                        text: "\n\nInstructions: \n",
-                                        style: TextStyle(fontStyle: FontStyle.italic, color: Colors.green, fontWeight: FontWeight.bold),
-                                      ),
-                                      TextSpan(
-                                          text: mydata[index]['instructions'],
-                                          style: TextStyle(color : Colors.black)
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              ]
-                          ),
-                        );
-                      },
-                      itemCount: mydata == null ? 0 : mydata.length,
-                    );
-                  }
-              )
+  showSummary(BuildContext context, String name, String indregients, String instructions) {
+    showDialog(
+        context: context,
+        builder: (context) => Center(
+          child: Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Card(
+              child: Padding(padding: const EdgeInsets.all(3.0),
+                child: new Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      RichText(
+                        text: TextSpan(
+                          style: DefaultTextStyle.of(context).style,
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: name,
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 25
+                              ),
+                            ),
+                            TextSpan(
+                              text: "\n\nIngredients: \n",
+                              style: TextStyle(fontStyle: FontStyle.italic, color: Colors.green, fontWeight: FontWeight.bold, fontSize: 20),
+                            ),
+                            TextSpan(
+                                text: indregients,
+                                style: TextStyle(color : Colors.black, fontSize: 20)
+                            ),
+                            TextSpan(
+                              text: "\n\nInstructions: \n",
+                              style: TextStyle(fontStyle: FontStyle.italic, color: Colors.green, fontWeight: FontWeight.bold, fontSize: 20),
+                            ),
+                            TextSpan(
+                                text: instructions,
+                                style: TextStyle(color : Colors.black, fontSize: 20)
+                            ),
+                          ],
+                        ),
+                      )
+                    ]
+                ),
+              ),
+            ),
           ),
         )
+    );
+  }
+
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Appetizers")
+      ),
+      body:  Container(
+        child: FutureBuilder(
+          future: DefaultAssetBundle
+              .of(context)
+              .loadString('load_json/recipe.json'),
+          builder: (context, snapshot){
+            var mydataa = jsonDecode(snapshot.data.toString());
+            return GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 1,
+                    childAspectRatio: 2.0
+                ),
+                itemCount: 6,
+                itemBuilder: (context, index) => InkWell(
+                  child: Card(
+                    color: Colors.lightBlueAccent,
+                    child: GridTile(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            mydataa[index]['name'],
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 25.0,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  onTap:(){
+                    showSummary(context, mydataa[index]['name'], mydataa[index]['ingredients'], mydataa[index]['instructions']);
+                  },
+                )
+            );
+          },
+        ),
+      )
     );
   }
 }
