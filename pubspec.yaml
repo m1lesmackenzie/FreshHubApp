@@ -22,4 +22,7 @@ assets:
     - assets/images/foodrescue2-5.jpg
     - assets/images/grouppic.jpg
     - assets/images/grouppic2.jpg
-    - load_json/recipe.json
+    - load_json/appetizers.json
+    - load_json/maincourses.json
+    - load_json/deserts.json
+    
