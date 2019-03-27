@@ -37,7 +37,7 @@ Widget getListView(BuildContext context) {
               VerticalPadding(
                 color: Colors.white,
               ),
-              Text("Scroll down to see photos and videos. Go to the navigation bar to check out more cool features.",
+              Text("Click on the buttons below to see photos and videos. Go to the navigation bar to check out more cool features.",
                   textAlign: TextAlign.center, style: TextStyle(fontFamily: 'Questrial')),
               VerticalPadding(
                 color: Colors.white,
